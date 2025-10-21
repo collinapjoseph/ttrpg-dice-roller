@@ -13,16 +13,21 @@
       rel="stylesheet" />
   </head>
   <body>
-    <h1>TTRPG Dice Roller</h1>
-    <h2>Enter Your Dice Roll:</h2>
-    <input class="dice-input" type="text" placeholder="Example: 1d20 + 1" />
-    <button class="roll-btn">ROLL</button>
-    <h2 class="roll-result"></h2>
+    <div class="container">
+      <div class="canvas">
+        <h1>TTRPG Dice Roller</h1>
+        <h2>Enter Your Dice Roll:</h2>
+        <input class="dice-input" type="text" placeholder="Example: 1d20 + 1" />
+        <input class="roll-btn" type="button" value="ROLL" />
+        <h2 class="roll-result">0</h2>
 
-    <footer>
-      Collin Joseph, 2025
-      <a href=""></a>
-    </footer>
+        <footer>
+          Collin Joseph, 2025
+          <a href=""></a>
+        </footer>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./script.js" charset="UTF-8"></script>
   </body>
 </html>
