@@ -1,8 +1,58 @@
 body {
     font-family: "Grenze Gotisch", serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+input {
+    font-family: "Grenze Gotisch", serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.dice-input{
+    width: 50%;
+    text-align: center;
+    border: 0;
+    border-bottom: solid 1px;
+}
+
+.roll-btn{
+    width: 25%;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #ddd;
 }
 
 footer{
     margin-top: 25px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+}
+
+.canvas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    background-color: #eee;
+    box-shadow: 0 0 20px #eee;
+}
+
+.roll-result{
+    font-size: 2rem;
+    visibility: hidden;
 }
