@@ -1,5 +1,10 @@
 $(document).ready(function () {
+  const diceRollAudio = new Audio("./audio/dice-142528.mp3");
+  
   $(".roll-btn").on("click", function () {
+    // play audio
+    diceRollAudio.play();
+    
     // get text input
     var inputText = $(".dice-input").val();
     console.log(`Input: ${inputText}`);
