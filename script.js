@@ -18,7 +18,7 @@ $(document).ready(function () {
       var diceSign = 1;
       
       if (m[1]){
-        diceSign = Number(m[1]+diceSign)
+        diceSign = Number(m[1]+"1")
       }
       
       var diceCount = Number(m[2]);
@@ -26,7 +26,7 @@ $(document).ready(function () {
       
       for (var i = 0; i < diceCount; i++) {
         var rollValue = Math.floor(Math.random() * diceValue) + 1;
-        rollResult += rollValue;
+        rollResult += diceSign * rollValue;
         console.log(`Die 1d${diceValue} #${i + 1}: ${rollValue}`);
       }
     }
