@@ -9,8 +9,6 @@ $(document).ready(function () {
     var inputText = $(".dice-input").val();
     console.log(`Input: ${inputText}`);
 
-    // dice quantity, dice value, modifier
-
     // compute each dice roll
     var rollResult = 0;
     var diceMatch = inputText.matchAll(/([\+\-])?\s*(\d+)d(\d+)/g);
