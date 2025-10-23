@@ -9,32 +9,36 @@ $(document).ready(function () {
     var inputText = $(".dice-input").val();
     console.log(`Input: ${inputText}`);
 
-    // Parse: dice quantity, dice value, modifier
-    // TODO: support unlimited sequence of dice and modifiers
-    var dice = inputText.match(
-      /(?<quantity>\d+)d(?<value>\d+)\s*(?<modSign>[\+\-])?\s*(?<modValue>\d+)?/
-    );
+    // dice quantity, dice value, modifier
 
     // compute each dice roll
     var rollResult = 0;
-    var diceQuantity = Number(dice.groups.quantity);
-    var diceValue = Number(dice.groups.value);
-    for (var i = 0; i < diceQuantity; i++) {
-      var rollValue = Math.floor(Math.random() * diceValue) + 1;
-      rollResult += rollValue;
-      console.log(`Die #${i + 1}: ${rollValue}`);
-    }
-
-    // apply modifier
-    if (dice.groups.modSign) {
-      if (dice.groups.modSign == "+") {
-        rollResult += Number(dice.groups.modValue);
-      } else {
-        rollResult -= Number(dice.groups.modValue);
+    var diceMatch = inputText.matchAll(/([\+\-])?\s*(\d+)d(\d+)/g);
+    for(const m of diceMatch){
+      var diceSign = 1;
+      
+      if (m[1]){
+        diceSign = Number(m[1]+diceSign)
       }
-      console.log(`Modifier: ${dice.groups.modSign}${dice.groups.modValue}`);
-    } else {
-      console.log("No modifier included.");
+      
+      var diceCount = Number(m[2]);
+      var diceValue = Number(m[3]);
+      
+      for (var i = 0; i < diceCount; i++) {
+        var rollValue = Math.floor(Math.random() * diceValue) + 1;
+        rollResult += rollValue;
+        console.log(`Die 1d${diceValue} #${i + 1}: ${rollValue}`);
+      }
+    }
+    
+    // apply modifier
+    var modifierMatch = inputText.matchAll(/[+\-]?\s*\b\d+\b/g);
+    for(const m of modifierMatch){
+      if (m[0]){
+        var modifierValue = Number(m[0].replace(" ", ""));
+        rollResult += modifierValue;
+        console.log(`Modifier: ${modifierValue}`);
+      }
     }
 
     // set result text
