@@ -1,15 +1,17 @@
 $(document).ready(function () {
+  // Sound Effect by u_qpfzpydtro from Pixabay
   const diceRollAudio = new Audio("./audio/dice-142528.mp3");
   
   $(".roll-btn").on("click", function () {
-    // play audio
+    // Play audio
+    diceRollAudio.currentTime = 0;
     diceRollAudio.play();
     
-    // get text input
+    // Get text input
     var inputText = $(".dice-input").val();
     console.log(`Input: ${inputText}`);
 
-    // compute each dice roll
+    // Compute each dice roll
     var rollResult = 0;
     var diceMatch = inputText.matchAll(/([\+\-])?\s*(\d+)d(\d+)/g);
     for(const m of diceMatch){
@@ -29,7 +31,7 @@ $(document).ready(function () {
       }
     }
     
-    // apply modifier
+    // Apply modifier
     var modifierMatch = inputText.matchAll(/[+\-]?\s*\b\d+\b/g);
     for(const m of modifierMatch){
       if (m[0]){
@@ -39,7 +41,7 @@ $(document).ready(function () {
       }
     }
 
-    // set result text
+    // Set result text
     $(".roll-result").text(rollResult);
     $(".roll-result").css("visibility", "visible");
   });
